@@ -98,7 +98,11 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background-image: url('../img/hero-home-bg.png');
+    background-size: cover; /* cobre toda a área sem distorcer */
+    background-position: center 50%; /* centraliza a imagem */
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* troque para 'fixed' se quiser paralaxe em desktop */
     color: white;
     padding: 100px 20px;
     text-align: center;
@@ -106,6 +110,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative; /* necessário para o overlay */
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35)); /* ajuste a opacidade conforme necessário */
+    pointer-events: none;
+}
+
+.hero .hero-content {
+    position: relative;
+    z-index: 1; /* garante que o conteúdo fique acima do overlay */
 }
 
 .hero-content h2 {
@@ -179,15 +198,15 @@ body {
 }
 
 .burger-bg {
-    background: linear-gradient(135deg,  red 0%, black 60%);
+    background: linear-gradient(135deg,  gray 0%, black 60%);
 }
 
 .store-bg {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #325c86 0%, black 60%);
 }
 
 .cafe-bg {
-    background: linear-gradient(135deg, #6f4e37 0%, #8b6f47 100%);
+    background: linear-gradient(135deg, #a36b43 0%, black 60%);
 }
 
 .card-body {
