@@ -1,21 +1,11 @@
 // Menu Responsivo
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
-
-    // Toggle menu ao clicar no hamburger
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-    }
 
     // Fechar menu ao clicar em um link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
             navMenu.classList.remove('active');
             
             // Atualizar link ativo
@@ -36,10 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fechar menu ao clicar fora
     document.addEventListener('click', function(event) {
         const isClickInsideNav = navMenu.contains(event.target);
-        const isClickOnHamburger = hamburger.contains(event.target);
         
-        if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
+        if (!isClickInsideNav && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
         }
     });
