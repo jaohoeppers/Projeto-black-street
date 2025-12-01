@@ -4,3 +4,4 @@ export function goTo(id){
         el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     }
 }
+window.goTo = goTo;
